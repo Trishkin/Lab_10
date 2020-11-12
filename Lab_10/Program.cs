@@ -11,7 +11,8 @@ namespace Lab_10
         static void Main(string[] args)
         {
             //Part1();
-            Part2();
+            //Part2();
+            Part3();
         }
 
         static void Part1()
@@ -55,6 +56,29 @@ namespace Lab_10
             ListController.Info(CollectionList);
             Console.WriteLine("__________________________________________________");
             ListController.Find(CollectionList, 78);
+        }
+
+        static void Part3()
+        {
+
+            Computer MyComp1 = new Computer("Dimavm1", "Asus", "Asus");
+            Computer MyComp2 = new Computer("Dimavm2", "Asis", "Asis");
+            Computer MyComp3 = new Computer("Dimavm3", "As", "As");
+            ObservableCollection<Computer> MyList = new ObservableCollection<Computer>();
+            MyList.Notify += DisplayMessage;
+            MyList.Add(MyComp1);
+            MyList.Add(MyComp2);
+            MyList.Add(MyComp3);
+            MyList.Info();
+            Console.WriteLine("__________________________________________________");
+            MyList.Remove(MyComp2);
+            MyList.Info();
+
+            static void DisplayMessage(string message)
+            {
+                Console.WriteLine(message);
+            }
+
         }
     }
 }
